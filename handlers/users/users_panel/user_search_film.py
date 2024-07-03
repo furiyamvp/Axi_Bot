@@ -1,8 +1,6 @@
 from aiogram import types
 from loader import dp
 from utils.db_commands.film import get_film_code, get_film_link_instagram, get_film_link_tiktok, get_film_link_you_tube
-from utils.db_commands.users import get_user_status
-from keyboards.default.user import user_main_menu_def
 import re
 
 from utils.function.film_type import film_type_hashtag
