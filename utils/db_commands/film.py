@@ -18,7 +18,7 @@ async def get_film_code(film_id: int) -> Union[dict[Any, Any], bool]:
         print(error_text)
 
 
-async def get_film_link_instagram(film_link: int) -> Union[dict[Any, Any], bool]:
+async def get_film_link_instagram(film_link: str) -> Union[dict[Any, Any], bool]:
     try:
         query = select(films).where(films.c.instagram == film_link)
         row = await database.fetch_one(query=query)
