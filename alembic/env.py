@@ -4,6 +4,8 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
+
+from main.database import DATABASE_URL
 from main.models import metadata
 from main import database
 
@@ -11,7 +13,7 @@ from main import database
 # access to the values within the .ini file in use.
 config = context.config
 
-url = config.set_main_option('sqlalchemy.url', database_set.DATABASE_URL)
+url = config.set_main_option('sqlalchemy.url', DATABASE_URL)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
@@ -23,6 +25,7 @@ if config.config_file_name is not None:
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
 target_metadata = metadata
+
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
