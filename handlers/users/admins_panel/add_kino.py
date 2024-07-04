@@ -49,30 +49,20 @@ async def add_name_handler(message: types.Message, state: FSMContext):
 
 @dp.message_handler(state=AddFilm.state, chat_id=ADMINS)
 async def add_state_handler(message: types.Message, state: FSMContext):
-    if message.text.isalpha():
-        await state.update_data(state=message.text)
-        text = ("Iltimos kino chiqarilgan yilini kiriting\n"
-                "Masalan: 2024")
-        await message.answer(text=text)
-        await AddFilm.date.set()
-    else:
-        text = "Son kirita olmaysiz"
-        await message.answer(text=text)
-        await AddFilm.state.set()
+    await state.update_data(state=message.text)
+    text = ("Iltimos kino chiqarilgan yilini kiriting\n"
+            "Masalan: 2024")
+    await message.answer(text=text)
+    await AddFilm.date.set()
 
 
 @dp.message_handler(state=AddFilm.date, chat_id=ADMINS)
 async def add_date_handler(message: types.Message, state: FSMContext):
-    if message.text.isnumeric():
-        await state.update_data(date=message.text)
-        text = ("Iltimos Kino turini kiritin bir neshta kiritsangiz ham boladi\n"
-                "Masalan: Jangar Fantastika Horor, vergul va boshqa narsalardan foydalanmang")
-        await message.answer(text=text)
-        await AddFilm.type.set()
-    else:
-        text = "Harf kirita olmaysiz"
-        await message.answer(text=text)
-        await AddFilm.date.set()
+    await state.update_data(date=message.text)
+    text = ("Iltimos Kino turini kiritin bir neshta kiritsangiz ham boladi\n"
+            "Masalan: Jangar Fantastika Horor, vergul va boshqa narsalardan foydalanmang")
+    await message.answer(text=text)
+    await AddFilm.type.set()
 
 
 @dp.message_handler(state=AddFilm.type, chat_id=ADMINS)

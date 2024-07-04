@@ -23,7 +23,6 @@ async def user_search_film_handler(message: types.Message):
 
 
 @dp.message_handler(regexp=r"^https:\/\/(www\.)?instagram\.com\/.*$")
-
 async def user_search_film_code_handler(message: types.Message):
     film = await get_film_link_instagram(str(message.text))
     if film:
