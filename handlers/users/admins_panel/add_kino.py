@@ -31,13 +31,6 @@ async def add_product_name_handler(message: types.Message, state: FSMContext):
     await AddFilm.name.set()
 
 
-@dp.message_handler(state=AddFilm.film)
-async def error_photo_handler(message: types.Message):
-    text = "Siz faqat kino tashlay olasiz so'z kirita olmaysiz"
-    await message.answer(text=text)
-    await AddFilm.film.set()
-
-
 @dp.message_handler(state=AddFilm.name, chat_id=ADMINS)
 async def add_name_handler(message: types.Message, state: FSMContext):
     await state.update_data(name=message.text)
