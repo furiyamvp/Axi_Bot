@@ -12,8 +12,8 @@ async def user_search_film_handler(message: types.Message):
     if film:
         film_type = await film_type_hashtag(film["type"])
 
-        caption = (f"🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍state: {film['state']}\n"
-                   f"📅Date: {film['date']}-year\n🎞️type: {film_type}\n💜Instagram: {film['instagram']}\n"
+        caption = (f"\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
+                   f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
                    f"🖤Tiktok: {film['tiktok']}\n❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
         await message.answer_video(video=film["film"], caption=caption)
 
@@ -28,8 +28,8 @@ async def user_search_film_code_handler(message: types.Message):
     if film:
         film_type = await film_type_hashtag(film["type"])
 
-        caption = (f"\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍state: {film['state']}\n"
-                   f"📅Date: {film['date']}-year\n🎞️type: {film_type}\n💜Instagram: {film['instagram']}\n"
+        caption = (f"\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
+                   f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
                    f"🖤Tiktok: {film['tiktok']}\n❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
         await message.answer_video(video=film["film"], caption=caption)
     else:
@@ -43,10 +43,10 @@ async def user_search_film_code_handler(message: types.Message):
     if film:
         film_type = await film_type_hashtag(film["type"])
 
-        caption = (f"🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍state: {film['state']}\n"
-                   f"📅Date: {film['date']}-year\n🎞️type: {film_type}\n💜Instagram: {film['instagram']}\n"
+        caption = (f"\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
+                   f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
                    f"🖤Tiktok: {film['tiktok']}\n❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
-        await message.answer_video(video=film['film'], caption=caption)
+        await message.answer_video(video=film["film"], caption=caption)
     else:
         text = "Bunday link li kino yoq ❗️"
         await message.answer(text=text)
@@ -58,8 +58,8 @@ async def user_search_film_code_handler(message: types.Message):
     if film:
         film_type = await film_type_hashtag(film["type"])
 
-        caption = (f"🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍state: {film['state']}\n"
-                   f"📅Date: {film['date']}-year\n🎞️type: {film_type}\n💜Instagram: {film['instagram']}\n"
+        caption = (f"\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
+                   f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
                    f"🖤Tiktok: {film['tiktok']}\n❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
         await message.answer_video(video=film["film"], caption=caption)
     else:

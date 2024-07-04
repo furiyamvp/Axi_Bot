@@ -7,7 +7,7 @@ BOT_TOKEN = env.str("BOT_TOKEN")
 ADMINS = env.list("ADMINS")
 
 CHANNELS = [
-    ("https://t.me/Zangoriekran_kanali", -1002107248547, "Zangori Ekran")
+    ("https://t.me/Axi_uchun_Bot", -1002233618446, "Zangori Ekran")
 ]
 
 DB_USER = env.str("DB_USER")

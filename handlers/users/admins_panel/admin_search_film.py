@@ -15,9 +15,9 @@ async def user_search_film_code(message: types.Message):
     if film:
         film_type = await film_type_hashtag(film["type"])
 
-        caption = (f"\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍state: {film['state']}\n"
-                   f"📅Date: {film['date']}-year\n🎞️type: {film_type}\n💜Instagram: {film['instagram']}\n"
-                   f"🖤Tiktok: {film['tiktok']}\n❤️You Tube: {film['you_tube']}\n🧩Our Chanel: @Zangoriekran_kanali")
+        caption = (f"\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
+                   f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
+                   f"🖤Tiktok: {film['tiktok']}\n❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
         await message.answer_video(video=film["film"], caption=caption,
                                    reply_markup=await admin_film_change_def(film['id']))
     else:
@@ -31,13 +31,13 @@ async def user_search_film_code_handler(message: types.Message):
     if film:
         film_type = await film_type_hashtag(film["type"])
 
-        caption = (f"\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍state: {film['state']}\n"
-                   f"📅Date: {film['date']}-year\n🎞️type: {film_type}\n💜Instagram: {film['instagram']}\n"
-                   f"🖤Tiktok: {film['tiktok']}\n❤️You Tube: {film['you_tube']}\n🧩Our Chanel: @Zangoriekran_kanali")
+        caption = (f"\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
+                   f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
+                   f"🖤Tiktok: {film['tiktok']}\n❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
         await message.answer_video(video=film["film"], caption=caption,
                                    reply_markup=await admin_film_change_def(film['id']))
     else:
-        text = "Bunday link li kino yoq ❗️"
+        text = "Bunday link li kino yo'q ❗️"
         await message.answer(text=text)
 
 
@@ -47,13 +47,13 @@ async def user_search_film_code_handler(message: types.Message):
     if film:
         film_type = await film_type_hashtag(film["type"])
 
-        caption = (f"\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍state: {film['state']}\n"
-                   f"📅Date: {film['date']}-year\n🎞️type: {film_type}\n💜Instagram: {film['instagram']}\n"
-                   f"🖤Tiktok: {film['tiktok']}\n❤️You Tube: {film['you_tube']}\n🧩Our Chanel: @Zangoriekran_kanali")
+        caption = (f"\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
+                   f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
+                   f"🖤Tiktok: {film['tiktok']}\n❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
         await message.answer_video(video=film["film"], caption=caption,
                                    reply_markup=await admin_film_change_def(film['id']))
     else:
-        text = "Bunday link li kino yoq ❗️"
+        text = "Bunday link li kino yo'q ❗️"
         await message.answer(text=text)
 
 
@@ -63,11 +63,11 @@ async def user_search_film_code_handler(message: types.Message):
     if film:
         film_type = await film_type_hashtag(film["type"])
 
-        caption = (f"\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍state: {film['state']}\n"
-                   f"📅Date: {film['date']}-year\n🎞️type: {film_type}\n💜Instagram: {film['instagram']}\n"
-                   f"🖤Tiktok: {film['tiktok']}\n❤️You Tube: {film['you_tube']}\n🧩Our Chanel: @Zangoriekran_kanali")
+        caption = (f"\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
+                   f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
+                   f"🖤Tiktok: {film['tiktok']}\n❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
         await message.answer_video(video=film["film"], caption=caption,
                                    reply_markup=await admin_film_change_def(film['id']))
     else:
-        text = "Bunday link li kino yoq ❗️"
+        text = "Bunday link li kino yo'q ❗️"
         await message.answer(text=text)
