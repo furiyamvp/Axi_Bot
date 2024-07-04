@@ -14,7 +14,6 @@ films = sqlalchemy.Table(
     sqlalchemy.Column("date", sqlalchemy.BigInteger, nullable=True),
     sqlalchemy.Column("type", sqlalchemy.String, nullable=False),
     sqlalchemy.Column("instagram", sqlalchemy.String, nullable=False),
-    sqlalchemy.Column("tiktok", sqlalchemy.String, nullable=False),
     sqlalchemy.Column("you_tube", sqlalchemy.String, nullable=False),
     sqlalchemy.Column("status", sqlalchemy.String, nullable=False),
     sqlalchemy.Column("code", sqlalchemy.BigInteger, unique=True, nullable=False),

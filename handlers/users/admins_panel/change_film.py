@@ -159,7 +159,7 @@ async def admin_change_film_instagram_handler(call: types.CallbackQuery, callbac
 async def update_instagram_handler(message: types.Message, state: FSMContext):
     data = await state.get_data()
     film_id = data.get('film_id')
-    instagram = message.text
+    instagram = message.text.split("=")[0]
     if await check_link_instagram(message.text):
         if await admin_update_film(int(film_id), "instagram", instagram):
             text = "Film's instagram link changed 🔄"
@@ -175,35 +175,6 @@ async def update_instagram_handler(message: types.Message, state: FSMContext):
         await UpdateFilm.instagram.set()
 
 
-@dp.callback_query_handler(admin_film_change_tiktok.filter(action="change_film_tiktok"), chat_id=ADMINS)
-async def admin_change_film_tiktok_handler(call: types.CallbackQuery, callback_data: dict, state: FSMContext):
-    film_id = callback_data.get('film_id')
-    await state.update_data(film_id=film_id)
-    text = "Please enter a new film tiktok link"
-    await call.message.answer(text=text)
-    await UpdateFilm.tiktok.set()
-
-
-@dp.message_handler(state=UpdateFilm.tiktok)
-async def update_tiktok_handler(message: types.Message, state: FSMContext):
-    data = await state.get_data()
-    film_id = data.get('film_id')
-    tiktok = message.text
-    if await check_link_tiktok(message.text):
-        if await admin_update_film(int(film_id), "tiktok", tiktok):
-            text = "Film's tiktok link changed 🔄"
-            await message.answer(text=text, reply_markup=await admin_main_menu_def())
-            await state.finish()
-        else:
-            text = "Error: Film's didn't tiktok link change 🔄❌"
-            await message.answer(text=text, reply_markup=await admin_main_menu_def())
-            await state.finish()
-    else:
-        text = "You can only enter an tiktok link"
-        await message.answer(text=text)
-        await UpdateFilm.tiktok.set()
-
-
 @dp.callback_query_handler(admin_film_change_you_tube.filter(action="change_film_you_tube"), chat_id=ADMINS)
 async def admin_change_film_tiktok_handler(call: types.CallbackQuery, callback_data: dict, state: FSMContext):
     film_id = callback_data.get('film_id')
@@ -217,7 +188,7 @@ async def admin_change_film_tiktok_handler(call: types.CallbackQuery, callback_d
 async def update_tiktok_handler(message: types.Message, state: FSMContext):
     data = await state.get_data()
     film_id = data.get('film_id')
-    you_tube = message.text
+    you_tube = message.text.split("=")[0]
     if await check_link_you_tube(message.text):
         if await admin_update_film(int(film_id), "you_tube", you_tube):
             text = "Film's you tube link changed 🔄"

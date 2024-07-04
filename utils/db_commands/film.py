@@ -76,7 +76,6 @@ async def add_film(data: dict):
             date=int(data['date']),
             type=data['type'],
             instagram=data['instagram'],
-            tiktok=data['tiktok'],
             you_tube=data['you_tube'],
             status=data['status'],
             code=int(generate_unique_code())

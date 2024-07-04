@@ -9,8 +9,8 @@ from main.config import ADMINS
 from loader import dp
 from states.AddFilmState import AddFilm
 from keyboards.default.back import main_menu_back
-from utils.checker.checker_link import check_link_instagram, check_link_tiktok, check_link_you_tube
-from utils.db_commands.film import add_film, get_film_film
+from utils.checker.checker_link import check_link_instagram, check_link_you_tube
+from utils.db_commands.film import add_film
 from utils.function.film_type import film_type_hashtag
 
 
@@ -77,35 +77,23 @@ async def add_type_handler(message: types.Message, state: FSMContext):
 @dp.message_handler(state=AddFilm.instagram, chat_id=ADMINS)
 async def add_instagram_link_handler(message: types.Message, state: FSMContext):
     if await check_link_instagram(message.text):
-        await state.update_data(instagram=message.text)
+        instagram_link = message.text.split("=")[0]
+        await state.update_data(instagram=instagram_link)
         text = ("Iltimos Kinoni tiktokdagi qisqa videosini link ni kiriting\n"
                 "Masalan: https://vt.tiktok.com/******")
         await message.answer(text=text)
-        await AddFilm.tiktok.set()
+        await AddFilm.you_tube.set()
     else:
         text = "Faqat instagramni linkini kirita olasiz"
         await message.answer(text=text)
         await AddFilm.instagram.set()
 
 
-@dp.message_handler(state=AddFilm.tiktok, chat_id=ADMINS)
-async def add_tiktok_link_handler(message: types.Message, state: FSMContext):
-    if await check_link_tiktok(message.text):
-        await state.update_data(tiktok=message.text)
-        text = "Iltimos Kinoni you tubedagi qisqa videosini link ni kiriting\n"
-        "Masalan: https://www.youtube.com/******"
-        await message.answer(text=text)
-        await AddFilm.you_tube.set()
-    else:
-        text = "Faqat instagramni linkini kirita olasiz"
-        await message.answer(text=text)
-        await AddFilm.tiktok.set()
-
-
 @dp.message_handler(state=AddFilm.you_tube, chat_id=ADMINS)
 async def add_you_tube_link_handler(message: types.Message, state: FSMContext):
     if await check_link_you_tube(message.text):
-        await state.update_data(you_tube=message.text)
+        you_tube_link = message.text.split("=")[0]
+        await state.update_data(you_tube=you_tube_link)
         text = ("Kinoni statusi qanday bolsin ?\n"
                 "Example: Free or Premium")
         await message.answer(text=text, reply_markup=add_film_status)
@@ -141,7 +129,7 @@ async def add_status_handler(call: CallbackQuery, state: FSMContext):
 
         caption = (f"\n🎬Nomi: {date['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {date['quality']}\n🌍state: {date['state']}\n"
                    f"📅Date: {date['date']}-year\n🎞️type: {film_type}\n💜Instagram: {date['instagram']}\n"
-                   f"🖤Tiktok: {date['tiktok']}\n❤️You Tube: {date['you_tube']}")
+                   f"❤️You Tube: {date['you_tube']}")
         await call.message.answer_video(video=date["film"], caption=caption)
         await call.message.answer(text=text)
         await state.finish()
