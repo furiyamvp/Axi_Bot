@@ -10,7 +10,7 @@ from loader import dp
 from states.AddFilmState import AddFilm
 from keyboards.default.back import main_menu_back
 from utils.checker.checker_link import check_link_instagram, check_link_you_tube
-from utils.db_commands.film import add_film
+from utils.db_commands.film import add_film, get_film_film
 from utils.function.film_type import film_type_hashtag
 
 
@@ -124,10 +124,11 @@ async def add_status_handler(call: CallbackQuery, state: FSMContext):
 async def add_status_handler(call: CallbackQuery, state: FSMContext):
     date = await state.get_data()
     if await add_film(date):
+        film = await get_film_film(date["film"])
         film_type = await film_type_hashtag(date["type"])
         text = "Movie added. ✅"
 
-        caption = (f"\n🎬Nomi: {date['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {date['quality']}\n🌍state: {date['state']}\n"
+        caption = (f"🆔Kino kodi: {film['code']}\n🎬Nomi: {date['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {date['quality']}\n🌍state: {date['state']}\n"
                    f"📅Date: {date['date']}-year\n🎞️type: {film_type}\n💜Instagram: {date['instagram']}\n"
                    f"❤️You Tube: {date['you_tube']}")
         await call.message.answer_video(video=date["film"], caption=caption)
