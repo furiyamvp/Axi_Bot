@@ -80,7 +80,7 @@ async def add_instagram_link_handler(message: types.Message, state: FSMContext):
         instagram_link = message.text.split("=")[0]
         await state.update_data(instagram=instagram_link)
         text = ("Iltimos Kinoni tiktokdagi qisqa videosini link ni kiriting\n"
-                "Masalan: https://vt.tiktok.com/******")
+                "Masalan: https://www.youtube.com/******")
         await message.answer(text=text)
         await AddFilm.you_tube.set()
     else:
