@@ -1,7 +1,7 @@
 from sqlalchemy import select, func
 
 from main.database import database
-from main.models import films
+from main.models import films, users
 
 
 async def quantity_films():
@@ -11,4 +11,14 @@ async def quantity_films():
         return dict(row) if row else False
     except Exception as e:
         error_text = f"Error in quantity_film: {e}"
+        print(error_text)
+
+
+async def quantity_users():
+    try:
+        query = select(func.count(users.c.id))
+        row = await database.fetch_one(query=query)
+        return dict(row) if row else False
+    except Exception as e:
+        error_text = f"Error in quantity_users: {e}"
         print(error_text)

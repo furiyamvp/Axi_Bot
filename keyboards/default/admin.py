@@ -19,6 +19,7 @@ async def statistics_menu_def():
     markup = ReplyKeyboardMarkup(
         keyboard=[
             [
+                KeyboardButton("Foydalanuvchilar soni 👥"),
                 KeyboardButton("Filmlar soni 🎥")
             ],
             [
