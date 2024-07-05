@@ -6,7 +6,7 @@ from main.database import metadata
 users = sqlalchemy.Table(
     "users",
     metadata,
-    sqlalchemy.Column("id", sqlalchemy.BigInteger),
+    sqlalchemy.Column("id", sqlalchemy.BigInteger, primary_key=True),
     sqlalchemy.Column("chat_id", sqlalchemy.BigInteger, nullable=False),
 )
 
@@ -14,7 +14,7 @@ users = sqlalchemy.Table(
 films = sqlalchemy.Table(
     "films",
     metadata,
-    sqlalchemy.Column("id", sqlalchemy.BigInteger),
+    sqlalchemy.Column("id", sqlalchemy.BigInteger, primary_key=True),
     sqlalchemy.Column("film", sqlalchemy.String, nullable=False, unique=True),
     sqlalchemy.Column("name", sqlalchemy.String, nullable=False),
     sqlalchemy.Column("language", sqlalchemy.String, nullable=True),
