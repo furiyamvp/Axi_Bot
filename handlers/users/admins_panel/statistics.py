@@ -3,7 +3,8 @@ from aiogram import types
 from loader import dp
 from main.config import ADMINS
 from keyboards.default.admin import statistics_menu_def
-from utils.db_commands.statictics import quantity_films, quantity_users
+from utils.db_commands.statictics import quantity
+from main.models import films, users
 
 
 @dp.message_handler(text="Statistikalar 📊", chat_id=ADMINS, state="*")
@@ -14,7 +15,7 @@ async def statistics_menu_handler(message: types.Message):
 
 @dp.message_handler(text="Filmlar soni 🎥", chat_id=ADMINS, state="*")
 async def quantity_film_menu_handler(message: types.Message):
-    quantity_film = await quantity_films()
+    quantity_film = await quantity(films)
     quantity_film_number = quantity_film["count_1"]
     text = f"Botda {quantity_film_number} ta film bor"
     await message.answer(text=text, reply_markup=await statistics_menu_def())
@@ -22,7 +23,7 @@ async def quantity_film_menu_handler(message: types.Message):
 
 @dp.message_handler(text="Foydalanuvchilar soni 👥", chat_id=ADMINS, state="*")
 async def quantity_film_menu_handler(message: types.Message):
-    quantity_user = await quantity_users()
+    quantity_user = await quantity(users)
     quantity_user_number = quantity_user["count_1"]
     text = f"Botda {quantity_user_number} ta foydalanuvchi bor"
     await message.answer(text=text, reply_markup=await statistics_menu_def())
