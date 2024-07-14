@@ -1,4 +1,5 @@
 from aiogram import types
+from datetime import datetime
 
 from loader import dp
 from main.config import ADMINS
@@ -9,7 +10,7 @@ from main.models import films, users
 
 @dp.message_handler(text="Statistikalar 📊", chat_id=ADMINS, state="*")
 async def statistics_menu_handler(message: types.Message):
-    text = "Statistika sahifasiga xu"
+    text = "Statistika sahifasiga xush kelibsiz"
     await message.answer(text=text, reply_markup=await statistics_menu_def())
 
 

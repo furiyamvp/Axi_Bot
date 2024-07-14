@@ -1,5 +1,5 @@
 import sqlalchemy
-
+from datetime import datetime
 from main.database import metadata
 
 
@@ -8,6 +8,8 @@ users = sqlalchemy.Table(
     metadata,
     sqlalchemy.Column("id", sqlalchemy.BigInteger, primary_key=True),
     sqlalchemy.Column("chat_id", sqlalchemy.BigInteger, nullable=False),
+    sqlalchemy.Column("created_at", sqlalchemy.DateTime),
+    sqlalchemy.Column("updated_at", sqlalchemy.DateTime, onupdate=datetime.utcnow)
 )
 
 
@@ -26,4 +28,6 @@ films = sqlalchemy.Table(
     sqlalchemy.Column("you_tube", sqlalchemy.String, nullable=False),
     sqlalchemy.Column("status", sqlalchemy.String, nullable=False),
     sqlalchemy.Column("code", sqlalchemy.BigInteger, unique=True, nullable=False),
+    sqlalchemy.Column("created_at", sqlalchemy.DateTime),
+    sqlalchemy.Column("updated_at", sqlalchemy.DateTime, onupdate=datetime.utcnow)
 )
