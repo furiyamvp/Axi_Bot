@@ -4,9 +4,11 @@ from main.database import database
 from main.models import films
 
 
-async def admin_update_film(film_id: int, column: str, new_value):
+async def admin_update_film(film_id: int, column: str, new_value, message_date):
     try:
-        query = films.update().where(films.c.id == film_id).values({column: new_value})
+        query = films.update().where(films.c.id == film_id).values(
+            {column: new_value, films.c.updated_at: message_date})
+
         await database.execute(query=query)
         return True
     except SQLAlchemyError as e:
@@ -35,6 +37,3 @@ async def admin_delete_film(film_id: int):
         error_text = f"Error updating film with ID {film_id}: {e}"
         print(error_text)
         return {"error": error_text}
-
-
-

@@ -6,7 +6,7 @@ from keyboards.inline.change_film import *
 from main.config import ADMINS
 from states.UpdateFilmState import UpdateFilm
 from loader import dp
-from utils.checker.checker_link import check_link_instagram, check_link_tiktok, check_link_you_tube
+from utils.checker.checker_link import check_link_instagram, check_link_you_tube
 from utils.db_commands.update_film import admin_update_film, admin_delete_film
 
 
@@ -26,7 +26,7 @@ async def change_film_film_handler(message: types.Message, state: FSMContext):
     print(film_id)
     film = message.video.file_id
 
-    if await admin_update_film(int(film_id), "film", film):
+    if await admin_update_film(int(film_id), "film", film, message.date):
         text = "Film changed 🔄"
         await message.answer(text=text, reply_markup=await admin_main_menu_def())
         await state.finish()
@@ -58,7 +58,7 @@ async def update_name_handler(message: types.Message, state: FSMContext):
     film_id = data.get('film_id')
     name = message.text
 
-    if await admin_update_film(int(film_id), "name", name):
+    if await admin_update_film(int(film_id), "name", name, message.date):
         text = "Film's name changed 🔄"
         await message.answer(text=text, reply_markup=await admin_main_menu_def())
         await state.finish()
@@ -82,7 +82,7 @@ async def update_state_handler(message: types.Message, state: FSMContext):
     data = await state.get_data()
     film_id = data.get('film_id')
     state = message.text
-    if await admin_update_film(int(film_id), "state", state):
+    if await admin_update_film(int(film_id), "state", state, message.date):
         text = "Film's state changed 🔄"
         await message.answer(text=text, reply_markup=await admin_main_menu_def())
         await state.finish()
@@ -108,7 +108,7 @@ async def update_date_handler(message: types.Message, state: FSMContext):
     film_id = data.get('film_id')
     date = message.text
     if message.text.isnumeric():
-        if await admin_update_film(int(film_id),"date", int(date)):
+        if await admin_update_film(int(film_id),"date", int(date), message.date):
             text = "Film's date changed 🔄"
             await message.answer(text=text, reply_markup=await admin_main_menu_def())
             await state.finish()
@@ -136,7 +136,7 @@ async def update_type_handler(message: types.Message, state: FSMContext):
     data = await state.get_data()
     film_id = data.get('film_id')
     tpy = message.text
-    if await admin_update_film(int(film_id), "type", tpy):
+    if await admin_update_film(int(film_id), "type", tpy, message.date):
         text = "Film's type changed 🔄"
         await message.answer(text=text, reply_markup=await admin_main_menu_def())
         await state.finish()
@@ -161,7 +161,7 @@ async def update_instagram_handler(message: types.Message, state: FSMContext):
     film_id = data.get('film_id')
     instagram = message.text.split("=")[0]
     if await check_link_instagram(message.text):
-        if await admin_update_film(int(film_id), "instagram", instagram):
+        if await admin_update_film(int(film_id), "instagram", instagram, message.date):
             text = "Film's instagram link changed 🔄"
             await message.answer(text=text, reply_markup=await admin_main_menu_def())
             await state.finish()
@@ -190,7 +190,7 @@ async def update_tiktok_handler(message: types.Message, state: FSMContext):
     film_id = data.get('film_id')
     you_tube = message.text.split("=")[0]
     if await check_link_you_tube(message.text):
-        if await admin_update_film(int(film_id), "you_tube", you_tube):
+        if await admin_update_film(int(film_id), "you_tube", you_tube, message.date):
             text = "Film's you tube link changed 🔄"
             await message.answer(text=text, reply_markup=await admin_main_menu_def())
             await state.finish()
