@@ -23,8 +23,7 @@ async def add_product_handler(message: types.Message):
 
 @dp.message_handler(state=AddFilm.film, chat_id=ADMINS, content_types=types.ContentType.VIDEO)
 async def add_product_name_handler(message: types.Message, state: FSMContext):
-    await state.update_data(film=message.video.file_id)
-    await state.update_data(quality=message.video.height)
+    await state.update_data(film=message.video.file_id, quality=message.video.height, created_at=message.date)
     text = ("Iltimos kinoni nomini kiriting.\n"
             "Masalan: Harry Potter")
     await message.answer(text=text)
@@ -122,16 +121,16 @@ async def add_status_handler(call: CallbackQuery, state: FSMContext):
 
 @dp.callback_query_handler(state=AddFilm.confirmation, text="Add", chat_id=ADMINS)
 async def add_status_handler(call: CallbackQuery, state: FSMContext):
-    date = await state.get_data()
-    if await add_film(date):
-        film = await get_film_film(date["film"])
-        film_type = await film_type_hashtag(date["type"])
+    data = await state.get_data()
+    if await add_film(data=data):
+        film = await get_film_film(data["film"])
+        film_type = await film_type_hashtag(data["type"])
         text = "Movie added. ✅"
 
-        caption = (f"🆔Kino kodi: {film['code']}\n🎬Nomi: {date['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {date['quality']}\n🌍state: {date['state']}\n"
-                   f"📅Date: {date['date']}-year\n🎞️type: {film_type}\n💜Instagram: {date['instagram']}\n"
-                   f"❤️You Tube: {date['you_tube']}")
-        await call.message.answer_video(video=date["film"], caption=caption)
+        caption = (f"🆔Kino kodi: {film['code']}\n🎬Nomi: {data['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {data['quality']}\n🌍state: {data['state']}\n"
+                   f"📅Date: {data['date']}-year\n🎞️type: {film_type}\n💜Instagram: {data['instagram']}\n"
+                   f"❤️You Tube: {data['you_tube']}")
+        await call.message.answer_video(video=data["film"], caption=caption)
         await call.message.answer(text=text)
         await state.finish()
     else:

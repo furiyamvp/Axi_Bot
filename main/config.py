@@ -1,5 +1,5 @@
 from environs import Env
-
+import pytz
 env = Env()
 env.read_env()
 
@@ -15,3 +15,4 @@ DB_PASS = env.str("DB_PASS")
 DB_HOST = env.str("DB_HOST")
 DB_PORT = env.str("DB_PORT")
 DB_NAME = env.str("DB_NAME")
+

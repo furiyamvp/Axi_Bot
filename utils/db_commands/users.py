@@ -18,6 +18,7 @@ async def add_user(message):
     try:
         query = users.insert().values(
             chat_id=message.chat.id,
+            created_at=message.date
         )
         await database.execute(query)
         return True

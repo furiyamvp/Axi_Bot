@@ -1,7 +1,7 @@
 import sqlalchemy
 from datetime import datetime
-from main.database import metadata
 
+from main.database import metadata
 
 users = sqlalchemy.Table(
     "users",
@@ -11,7 +11,6 @@ users = sqlalchemy.Table(
     sqlalchemy.Column("created_at", sqlalchemy.DateTime, nullable=False),
     sqlalchemy.Column("updated_at", sqlalchemy.DateTime, onupdate=datetime.utcnow)
 )
-
 
 films = sqlalchemy.Table(
     "films",

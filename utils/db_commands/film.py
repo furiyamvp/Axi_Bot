@@ -1,9 +1,9 @@
 import string
 from typing import Union, Any
-from random import randint
 import random
 
 from sqlalchemy import select
+
 from main.database import database
 from main.models import films
 
@@ -65,20 +65,21 @@ def generate_unique_code():
     return int(code)
 
 
-async def add_film(data: dict):
+async def add_film(data: dict, ):
     try:
         query = films.insert().values(
-            film=data['film'],
-            name=data['name'],
+            film=data.get('film'),
+            name=data.get('name'),
             language=None,
-            quality=int(data['quality']),
-            state=data['state'],
-            date=int(data['date']),
-            type=data['type'],
-            instagram=data['instagram'],
-            you_tube=data['you_tube'],
-            status=data['status'],
-            code=int(generate_unique_code())
+            quality=int(data.get('quality')),
+            state=data.get('state'),
+            date=int(data.get('date')),
+            type=data.get('type'),
+            instagram=data.get('instagram'),
+            you_tube=data.get('you_tube'),
+            status=data.get('status'),
+            code=int(generate_unique_code()),
+            created_at=data.get('created_at')
         ).returning(films.c.id)
         return await database.execute(query)
 
