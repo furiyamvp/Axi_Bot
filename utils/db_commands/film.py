@@ -58,14 +58,16 @@ async def get_film_link_you_tube(film_link: str) -> Union[dict[Any, Any], bool]:
         print(error_text)
 
 
-def generate_unique_code():
-    unique_id = random.sample(string.digits, 3)
-    random.SystemRandom().shuffle(unique_id)
-    code = ''.join(unique_id)
-    return int(code)
+async def generate_unique_code():
+    while True:
+        code = random.randint(100, 999)
+        query = select([films.c.code]).where(films.c.code == code)
+        existing_code = await database.fetch_one(query)
+        if not existing_code:
+            return code
 
 
-async def add_film(data: dict, ):
+async def add_film(data: dict):
     try:
         query = films.insert().values(
             film=data.get('film'),
@@ -78,11 +80,12 @@ async def add_film(data: dict, ):
             instagram=data.get('instagram'),
             you_tube=data.get('you_tube'),
             status=data.get('status'),
-            code=int(generate_unique_code()),
+            code=await generate_unique_code(),
             created_at=data.get('created_at')
         ).returning(films.c.id)
         return await database.execute(query)
 
     except Exception as e:
-        error_text = f"Error adding file: {e}"
+        error_text = f"Error adding film: {e}"
         print(error_text)
+        return None
