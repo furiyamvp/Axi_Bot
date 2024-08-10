@@ -30,7 +30,7 @@ class BigBrother(BaseMiddleware):
         if not final_status:
             markup.add(InlineKeyboardButton(text="Obunani tekshirish ⭕️\n", callback_data="check_subs"))
             await update.message.answer(
-                "Botdan foydalanish uchun quyidagi kanallarga obuna bo'ling",
+                "Botdan foydalanish uchun quyidagi kanallarga obuna bo'ling ❌",
                 reply_markup=markup
             )
             raise CancelHandler()

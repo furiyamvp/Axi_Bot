@@ -9,7 +9,7 @@ from keyboards.default.user import user_main_menu_def
 
 @dp.callback_query_handler(text="check_subs", state="*")
 async def check_subs_handler(call: types.CallbackQuery):
-    result = "Siz kanalarga obuna bo'lmadingiz\n"
+    result = "Siz kanalarga obuna bo'lmadingiz ❌"
     final_status = True
     markup = InlineKeyboardMarkup(row_width=1)
 
