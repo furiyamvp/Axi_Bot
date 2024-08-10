@@ -24,11 +24,11 @@ class BigBrother(BaseMiddleware):
             status = await check(user_id=user, channel=channel[1])
             if not status:
                 final_status = False
-                button = InlineKeyboardButton(text=f"👉 {idx} - kanal", url=channel[0])
+                button = InlineKeyboardButton(text=f"{idx} - kanal", url=channel[0])
                 markup.add(button)
 
         if not final_status:
-            markup.add(InlineKeyboardButton(text="✅ Obunani tekshirish", callback_data="check_subs"))
+            markup.add(InlineKeyboardButton(text="Obunani tekshirish ⭕️\n", callback_data="check_subs"))
             await update.message.answer(
                 "Botdan foydalanish uchun quyidagi kanallarga obuna bo'ling",
                 reply_markup=markup
