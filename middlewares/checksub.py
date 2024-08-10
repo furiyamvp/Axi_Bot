@@ -1,11 +1,10 @@
 from aiogram.dispatcher.handler import CancelHandler
 from aiogram.dispatcher.middlewares import BaseMiddleware
 from aiogram import types
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from main.config import CHANNELS, ADMINS
 from utils.misc.subscription import check
-from keyboards.inline.check_sub import subs_check
-from loader import dp
 
 
 class BigBrother(BaseMiddleware):
@@ -19,13 +18,19 @@ class BigBrother(BaseMiddleware):
         else:
             return
 
-        result = "Botdan foydalanish uchun kanalga obuna bo'ling:\n"
         final_status = True
-        for channel in CHANNELS:
+        markup = InlineKeyboardMarkup(row_width=1)
+        for idx, channel in enumerate(CHANNELS, start=1):
             status = await check(user_id=user, channel=channel[1])
             if not status:
                 final_status = False
-                result += f"👉 <a href='{channel[0]}'>{channel[-1]}</a>\n"
+                button = InlineKeyboardButton(text=f"👉 {idx} - kanal", url=channel[0])
+                markup.add(button)
+
         if not final_status:
-            await update.message.answer(result, disable_web_page_preview=True, reply_markup=subs_check)
+            markup.add(InlineKeyboardButton(text="✅ Obunani tekshirish", callback_data="check_subs"))
+            await update.message.answer(
+                "Botdan foydalanish uchun quyidagi kanallarga obuna bo'ling",
+                reply_markup=markup
+            )
             raise CancelHandler()
