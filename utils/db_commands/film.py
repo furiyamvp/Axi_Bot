@@ -2,7 +2,6 @@ from typing import Union, Any
 import random
 
 from sqlalchemy import select
-from sqlalchemy.sql import func
 
 from main.database import database
 from main.models import films

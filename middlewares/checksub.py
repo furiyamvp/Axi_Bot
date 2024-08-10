@@ -1,12 +1,10 @@
-from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.handler import CancelHandler
 from aiogram.dispatcher.middlewares import BaseMiddleware
 from aiogram import types
-from aiogram.types import ReplyKeyboardRemove
 
-from keyboards.inline.check_sub import subs_check
 from main.config import CHANNELS, ADMINS
-from utils.misc import subscription
+from utils.misc.subscription import check
+from keyboards.inline.check_sub import subs_check
 from loader import dp
 
 
@@ -21,10 +19,10 @@ class BigBrother(BaseMiddleware):
         else:
             return
 
-        result = "Botdan foydalanish uchun quyidagi kanalga obuna bo'ling:\n"
+        result = "Botdan foydalanish uchun kanalga obuna bo'ling:\n"
         final_status = True
         for channel in CHANNELS:
-            status = await subscription.check(user_id=user, channel=channel[1])
+            status = await check(user_id=user, channel=channel[1])
             if not status:
                 final_status = False
                 result += f"👉 <a href='{channel[0]}'>{channel[-1]}</a>\n"
