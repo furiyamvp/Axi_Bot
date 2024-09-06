@@ -5,10 +5,11 @@ async def admin_main_menu_def():
     markup = ReplyKeyboardMarkup(
         keyboard=[
             [
-                KeyboardButton("Statistikalar 📊"),
+                KeyboardButton("Kino qo'shish ➕"),
             ],
             [
-                KeyboardButton("Kino qo'shish ➕")
+                KeyboardButton("Statistikalar 📊"),
+                KeyboardButton("Reklama yuborish 🪧")
             ],
         ], resize_keyboard=True
     )

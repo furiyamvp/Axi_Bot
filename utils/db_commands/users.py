@@ -14,6 +14,17 @@ async def get_user(chat_id: int) -> Union[dict[Any, Any], bool]:
         print(error_text)
 
 
+async def get_all_users_chat_ids() -> list[int]:
+    try:
+        query = users.select()
+        rows = await database.fetch_all(query=query)
+        return [row['chat_id'] for row in rows]
+    except Exception as e:
+        print(f"Error fetching user chat IDs: {e}")
+        return []
+
+
+
 async def add_user(message):
     try:
         query = users.insert().values(
