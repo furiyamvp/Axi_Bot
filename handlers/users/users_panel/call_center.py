@@ -1,5 +1,5 @@
 from aiogram import types
-from keyboards.default.back import main_menu_back
+from keyboards.default.user import user_main_menu_def
 from loader import dp
 
 
@@ -7,6 +7,6 @@ from loader import dp
 async def call_center_handler(message: types.Message):
     text = """
 1) @Misteraxi
-2) @furiya_yunus
+2) @kaneki_ken_x
 """
-    await message.answer(text=text, reply_markup=await main_menu_back())
+    await message.answer(text=text, reply_markup=await user_main_menu_def())
