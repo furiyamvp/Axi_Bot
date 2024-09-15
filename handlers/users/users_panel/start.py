@@ -7,5 +7,5 @@ from loader import dp
 
 @dp.message_handler(CommandStart(), state="*")
 async def admin_start_handler(message: types.Message):
-    text = "Botizmiga xush kelibsiz 🫡"
+    text = "Botizmiga xush kelibsiz🫡"
     await message.answer(text=text, reply_markup=await user_main_menu_def())
