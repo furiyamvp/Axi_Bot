@@ -26,6 +26,7 @@ films = sqlalchemy.Table(
     sqlalchemy.Column("instagram", sqlalchemy.String, nullable=False),
     sqlalchemy.Column("you_tube", sqlalchemy.String, nullable=False),
     sqlalchemy.Column("status", sqlalchemy.String, nullable=False),
+    sqlalchemy.Column("view_quantity", sqlalchemy.String, nullable=True),
     sqlalchemy.Column("code", sqlalchemy.BigInteger, unique=True, nullable=False),
     sqlalchemy.Column("created_at", sqlalchemy.DateTime, nullable=False),
     sqlalchemy.Column("updated_at", sqlalchemy.DateTime, onupdate=datetime.utcnow)

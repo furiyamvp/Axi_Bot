@@ -89,3 +89,30 @@ async def add_film(data: dict):
         error_text = f"Error adding film: {e}"
         print(error_text)
         return None
+
+
+async def update_view_quantity(film_id: int, chat_id: str) -> Union[dict[Any, Any], bool]:
+    try:
+        query = select(films).where(films.c.id == film_id)
+        row = await database.fetch_one(query=query)
+
+        if row:
+            film_data = dict(row)
+            view_quantity = film_data.get("view_quantity") or ""
+
+            view_quantity += f" {chat_id}"
+
+            update_query = films.update().where(films.c.id == film_id).values(
+                view_quantity=view_quantity.strip()
+            )
+            await database.execute(update_query)
+
+            return True
+        else:
+            return False
+
+    except Exception as e:
+        print(f"Error updating view_quantity for film ID {film_id}: {e}")
+        return False
+
+

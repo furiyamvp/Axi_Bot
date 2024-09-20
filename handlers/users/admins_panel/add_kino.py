@@ -11,7 +11,7 @@ from states.AddFilmState import AddFilm
 from keyboards.default.back import main_menu_back
 from utils.checker.checker_link import check_link_instagram, check_link_you_tube
 from utils.db_commands.film import add_film, get_film_film
-from utils.function.film_type import film_type_hashtag
+from utils.function.film import film_type_hashtag
 
 
 @dp.message_handler(text="Kino qo'shish ➕", state="*", chat_id=ADMINS)
