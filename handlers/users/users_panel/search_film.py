@@ -36,30 +36,31 @@ async def user_search_film_handler(message: types.Message):
             text = "Bunday kodli li kino yoq ❗️"
             await message.answer(text=text)
     else:
-        if film:
-            view_quantity = await film_view_quantity(view_quantity=film["view_quantity"], chat_id=message.chat.id)
-            if view_quantity:
-                film_type = await film_type_hashtag(film["type"])
+        if await add_user(message):
+            if film:
+                view_quantity = await film_view_quantity(view_quantity=film["view_quantity"], chat_id=message.chat.id)
+                if view_quantity:
+                    film_type = await film_type_hashtag(film["type"])
 
-                caption = (
-                    f"🆔Kino kodi: {film['code']}\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
-                    f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
-                    f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
-                await message.answer_video(video=film["film"], caption=caption)
+                    caption = (
+                        f"🆔Kino kodi: {film['code']}\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
+                        f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
+                        f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
+                    await message.answer_video(video=film["film"], caption=caption)
+
+                else:
+                    await update_view_quantity(film_id=film["id"], chat_id=message.chat.id)
+                    film_type = await film_type_hashtag(film["type"])
+
+                    caption = (
+                        f"🆔Kino kodi: {film['code']}\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
+                        f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
+                        f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
+                    await message.answer_video(video=film["film"], caption=caption)
 
             else:
-                await update_view_quantity(film_id=film["id"], chat_id=message.chat.id)
-                film_type = await film_type_hashtag(film["type"])
-
-                caption = (
-                    f"🆔Kino kodi: {film['code']}\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
-                    f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
-                    f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
-                await message.answer_video(video=film["film"], caption=caption)
-
-        else:
-            text = "Bunday kodli li kino yoq ❗️"
-            await message.answer(text=text)
+                text = "Bunday kodli li kino yoq ❗️"
+                await message.answer(text=text)
 
 
 @dp.message_handler(regexp=r"^https:\/\/(www\.)?instagram\.com\/.*$")
