@@ -19,7 +19,7 @@ async def user_search_film_handler(message: types.Message):
                 caption = (
                     f"🆔Kino kodi: {film['code']}\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
                     f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
-                    f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
+                    f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekrankanali")
                 await message.answer_video(video=film["film"], caption=caption)
 
             else:
@@ -29,7 +29,7 @@ async def user_search_film_handler(message: types.Message):
                 caption = (
                     f"🆔Kino kodi: {film['code']}\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
                     f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
-                    f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
+                    f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekrankanali")
                 await message.answer_video(video=film["film"], caption=caption)
 
         else:
@@ -45,7 +45,7 @@ async def user_search_film_handler(message: types.Message):
                     caption = (
                         f"🆔Kino kodi: {film['code']}\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
                         f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
-                        f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
+                        f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekrankanali")
                     await message.answer_video(video=film["film"], caption=caption)
 
                 else:
@@ -55,7 +55,7 @@ async def user_search_film_handler(message: types.Message):
                     caption = (
                         f"🆔Kino kodi: {film['code']}\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
                         f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
-                        f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
+                        f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekrankanali")
                     await message.answer_video(video=film["film"], caption=caption)
 
             else:
@@ -77,7 +77,7 @@ async def user_search_film_code_handler(message: types.Message):
                 caption = (
                     f"🆔Kino kodi: {film['code']}\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
                     f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
-                    f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
+                    f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekrankanali")
                 await message.answer_video(video=film["film"], caption=caption)
 
             else:
@@ -87,7 +87,7 @@ async def user_search_film_code_handler(message: types.Message):
                 caption = (
                     f"🆔Kino kodi: {film['code']}\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
                     f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
-                    f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
+                    f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekrankanali")
                 await message.answer_video(video=film["film"], caption=caption)
         else:
             text = "Bunday link li kino yoq ❗️"
@@ -102,7 +102,7 @@ async def user_search_film_code_handler(message: types.Message):
                     caption = (
                         f"🆔Kino kodi: {film['code']}\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
                         f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
-                        f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
+                        f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekrankanali")
                     await message.answer_video(video=film["film"], caption=caption)
 
                 else:
@@ -112,7 +112,7 @@ async def user_search_film_code_handler(message: types.Message):
                     caption = (
                         f"🆔Kino kodi: {film['code']}\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
                         f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
-                        f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
+                        f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekrankanali")
                     await message.answer_video(video=film["film"], caption=caption)
                 await message.answer_video(video=film["film"], caption=caption)
             else:
@@ -134,7 +134,7 @@ async def user_search_film_code_handler(message: types.Message):
                 caption = (
                     f"🆔Kino kodi: {film['code']}\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
                     f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
-                    f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
+                    f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekrankanali")
                 await message.answer_video(video=film["film"], caption=caption)
 
             else:
@@ -144,7 +144,7 @@ async def user_search_film_code_handler(message: types.Message):
                 caption = (
                     f"🆔Kino kodi: {film['code']}\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
                     f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
-                    f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
+                    f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekrankanali")
                 await message.answer_video(video=film["film"], caption=caption)
             await message.answer_video(video=film["film"], caption=caption)
         else:
@@ -160,7 +160,7 @@ async def user_search_film_code_handler(message: types.Message):
                     caption = (
                         f"🆔Kino kodi: {film['code']}\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
                         f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
-                        f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
+                        f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekrankanali")
                     await message.answer_video(video=film["film"], caption=caption)
 
                 else:
@@ -170,7 +170,7 @@ async def user_search_film_code_handler(message: types.Message):
                     caption = (
                         f"🆔Kino kodi: {film['code']}\n🎬Nomi: {film['name']}\n➖➖➖➖➖➖➖➖➖➖\n📀Sifati: {film['quality']}\n🌍Davlati: {film['state']}\n"
                         f"📅Sanasi: {film['date']}-yil\n🎞️Turi: {film_type}\n💜Instagram: {film['instagram']}\n"
-                        f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekran_kanali")
+                        f"❤️You Tube: {film['you_tube']}\n🧩Bizning kanalimiz: @Zangoriekrankanali")
                     await message.answer_video(video=film["film"], caption=caption)
                 await message.answer_video(video=film["film"], caption=caption)
             else:
