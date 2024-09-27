@@ -64,7 +64,10 @@ async def add_advertisement_desc_send_handler(message: types.Message, state: FSM
                 await dp.bot.send_video(chat_id=user_id, video=video, caption=description)
 
         except BotBlocked:
-            continue
+            await message.answer(f"Foydalanuvchi {user_id} tomonidan bot bloklangan.")
+        except Exception as e:
+            await message.answer(f"Xato: {e}")
 
     await message.answer("Reklama muvaffaqiyatli jo'natildi!")
     await state.finish()
+
