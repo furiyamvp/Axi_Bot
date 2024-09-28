@@ -66,7 +66,7 @@ async def add_advertisement_desc_send_handler(message: types.Message, state: FSM
         except BotBlocked:
             pass
         except Exception as e:
-            await message.answer(f"Xato: {e}")
+            print(f"Xato: {e}")
 
     await message.answer("Reklama muvaffaqiyatli jo'natildi!")
     await state.finish()
