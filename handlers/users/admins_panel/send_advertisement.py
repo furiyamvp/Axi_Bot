@@ -50,6 +50,9 @@ async def add_advertisement_desc_send_handler(message: types.Message, state: FSM
     description = message.text
 
     for user_id in users_id:
+        if user_id in ADMINS:
+            continue
+
         try:
             if photos:
                 media_group = types.MediaGroup()
@@ -70,4 +73,3 @@ async def add_advertisement_desc_send_handler(message: types.Message, state: FSM
 
     await message.answer("Reklama muvaffaqiyatli jo'natildi!")
     await state.finish()
-

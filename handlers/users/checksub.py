@@ -1,6 +1,5 @@
 from aiogram import types
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from aiogram.dispatcher.filters import Command
 from loader import dp
 from main.config import CHANNELS
 from utils.misc.subscription import check
