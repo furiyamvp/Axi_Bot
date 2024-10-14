@@ -20,7 +20,6 @@ class BigBrother(BaseMiddleware):
         else:
             return
 
-        # Skip the check if the user is an admin
         if str(user_id) in ADMINS:
             return
 
