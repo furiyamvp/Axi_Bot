@@ -7,6 +7,6 @@ from loader import dp
 async def call_center_handler(message: types.Message):
     text = """
 1) @Misteraxi
-2) @kaneki_ken_x
+2) @Zangori_Ekran_Admin
 """
     await message.answer(text=text, reply_markup=await user_main_menu_def())
