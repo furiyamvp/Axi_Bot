@@ -41,6 +41,30 @@ async def stop_adding_files(message: types.Message, state: FSMContext):
     await SendAdvert.description.set()
 
 
+import re
+
+
+def escape_markdown(text: str) -> str:
+    # Escape MarkdownV2 special characters
+    return re.sub(r'([_`*!~[\](){}<>#+\-.|])', r'\\\1', text)
+
+
+def format_message(description: str) -> str:
+    # Example of formatting with bold, italics, and blockquotes
+    # You can customize this function to match your specific formatting needs
+    formatted_description = description
+    formatted_description = formatted_description.replace('**', '*')  # Adjusting to MarkdownV2
+    formatted_description = formatted_description.replace('*', '*')  # Bold
+    formatted_description = formatted_description.replace('_', '*')  # Italics
+    formatted_description = formatted_description.replace('`', '```')  # Code
+
+    # Adding blockquote formatting (if you want to treat any line as a blockquote)
+    lines = formatted_description.split('\n')
+    formatted_description = '\n'.join(f'> {line}' for line in lines if line.strip())
+
+    return formatted_description
+
+
 @dp.message_handler(state=SendAdvert.description, chat_id=ADMINS)
 async def add_advertisement_desc_send_handler(message: types.Message, state: FSMContext):
     data = await state.get_data()
@@ -56,15 +80,23 @@ async def add_advertisement_desc_send_handler(message: types.Message, state: FSM
         try:
             if photos:
                 media_group = types.MediaGroup()
-
                 for photo in photos:
                     media_group.attach_photo(photo)
 
                 await dp.bot.send_media_group(chat_id=user_id, media=media_group)
                 await dp.bot.send_message(chat_id=user_id, text=description)
 
-            for video in videos:
-                await dp.bot.send_video(chat_id=user_id, video=video, caption=description)
+            elif videos:  # Check if there are videos
+                for video in videos:
+                    await dp.bot.send_video(chat_id=user_id, video=video, caption=description)
+
+            else:  # No photos or videos, send text message
+                # Format the description for MarkdownV2
+                formatted_description = format_message(description)
+                escaped_description = escape_markdown(formatted_description)
+
+                # Send the escaped and formatted message with MarkdownV2 parsing
+                await dp.bot.send_message(chat_id=user_id, text=escaped_description, parse_mode='MarkdownV2')
 
         except BotBlocked:
             pass
