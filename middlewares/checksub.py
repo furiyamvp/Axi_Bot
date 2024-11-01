@@ -10,14 +10,20 @@ from utils.misc.subscription import check
 class BigBrother(BaseMiddleware):
     async def on_pre_process_update(self, update: types.Update, data: dict):
         user_id = None
+        chat_type = None
 
         if update.message:
             user_id = update.message.from_user.id
+            chat_type = update.message.chat.type
         elif update.callback_query:
             user_id = update.callback_query.from_user.id
+            chat_type = update.callback_query.message.chat.type
             if update.callback_query.data == "check_subs":
                 return
         else:
+            return
+
+        if chat_type != types.ChatType.PRIVATE:
             return
 
         if str(user_id) in ADMINS:
