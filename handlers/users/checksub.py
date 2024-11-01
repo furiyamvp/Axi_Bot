@@ -6,7 +6,7 @@ from utils.misc.subscription import check
 from keyboards.default.user import user_main_menu_def
 
 
-@dp.callback_query_handler(text="check_subs", state="*")
+@dp.callback_query_handler(text="check_subs", state="*", chat_type=types.ChatType.PRIVATE)
 async def check_subs_handler(call: types.CallbackQuery):
     result = "Siz kanalarga obuna bo'lmadingiz ❌"
     final_status = True

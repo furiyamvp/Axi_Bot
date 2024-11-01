@@ -3,7 +3,7 @@ from keyboards.default.user import user_main_menu_def
 from loader import dp
 
 
-@dp.message_handler(text="Call-markaz 📞", state="*")
+@dp.message_handler(text="Call-markaz 📞", state="*", chat_type=types.ChatType.PRIVATE)
 async def call_center_handler(message: types.Message):
     text = """
 1) @Misteraxi

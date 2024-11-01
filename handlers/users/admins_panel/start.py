@@ -5,7 +5,7 @@ from loader import dp
 from main.config import ADMINS
 
 
-@dp.message_handler(CommandStart(), chat_id=ADMINS, state="*")
+@dp.message_handler(CommandStart(), chat_id=ADMINS, state="*", chat_type=types.ChatType.PRIVATE)
 async def admin_start_handler(message: types.Message):
     text = "Hello Admin🫡"
     await message.answer(text=text, reply_markup=await admin_main_menu_def())

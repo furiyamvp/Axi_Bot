@@ -121,8 +121,8 @@ async def user_search_film_code_handler(message: types.Message):
 
 
 @dp.message_handler(
-    regexp=r"(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})")
-    , chat_type=types.ChatType.PRIVATE
+    regexp=r"(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})"
+    , chat_type=types.ChatType.PRIVATE)
 async def user_search_film_code_handler(message: types.Message):
     you_tube_link = str(message.text.split("=")[0])
     film = await get_film_link_you_tube(you_tube_link)
